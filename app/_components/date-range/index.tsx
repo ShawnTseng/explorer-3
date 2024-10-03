@@ -7,15 +7,13 @@ const DateRange = ({ startDateTime = '', endDateTime = '' }) => {
     const start = startDateTime ? parseDateTime(startDateTime) : now(getLocalTimeZone());
     const end = endDateTime ? parseDateTime(endDateTime) : now(getLocalTimeZone());
     return (
-        <div className="flex justify-center">
-            <DateRangePicker
-                isReadOnly
-                defaultValue={{
-                    start,
-                    end
-                }}
-            />
-        </div>
+        <DateRangePicker
+            isReadOnly
+            defaultValue={{
+                start,
+                end
+            }}
+        />
     )
 }
 

@@ -3,6 +3,7 @@ import BlockFrostApi from "../_lib/block-frost-api";
 import DateTimePipe from "../_lib/date-fns";
 import ProgressBar from "../_components/progress-bar";
 import DateRange from "../_components/date-range";
+import SliderBar from "../_components/slider";
 
 export default async function Epoch() {
   const latestEpoch = await BlockFrostApi.epochsLatest();
@@ -16,6 +17,17 @@ export default async function Epoch() {
 
   return (
     <>
+      <div className="flex justify-center gap-20">
+        <div className="flex-1 p-4 max-w-md">
+          <SliderBar label="Epoch" defaultValue={latestEpoch.epoch} />
+        </div>
+        <div className="flex-1 p-4 max-w-md">
+          <DateRange
+            startDateTime={DateTimePipe.toISO8601(latestEpoch.start_time)}
+            endDateTime={DateTimePipe.toISO8601(latestEpoch.end_time)}
+          />
+        </div>
+      </div>
       <p>Current Epoch: {latestEpoch.epoch}</p>
       <p>Start Time: {DateTimePipe.DateTimePipe1(latestEpoch.start_time)}</p>
       <p>End Time: {DateTimePipe.DateTimePipe1(latestEpoch.end_time)}</p>
@@ -28,7 +40,7 @@ export default async function Epoch() {
       <p>active stack: {latestEpoch.active_stake}</p>
       <div className="flex">
         <div className="flex-1 p-4">
-          <p>Current Epoch</p>
+          <SliderBar label="Epoch" defaultValue={latestEpoch.epoch} />
           <DateRange
             startDateTime={DateTimePipe.toISO8601(latestEpoch.start_time)}
             endDateTime={DateTimePipe.toISO8601(latestEpoch.end_time)}
