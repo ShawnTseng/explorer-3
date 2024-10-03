@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Setup Env
+
+Add a file named `.env.local` to the root directory, with the following example content:
+```bash
+BlockFrostProjectId=preprodxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
 ## Getting Started
 
 First, run the development server:
