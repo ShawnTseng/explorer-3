@@ -2,15 +2,15 @@
 
 import { Slider } from "@nextui-org/slider";
 
-const SliderBar = ({ label = '', defaultValue = 1, maxValue = defaultValue, onChangeEnd = (value: number | number[]) => { console.log(value) } }) => {
+const SliderBar = ({ label = '', value = 1, maxValue = value, minValue = 0, onChangeEnd = (value: number | number[]) => { console.log(value) } }) => {
 
     return (
         <Slider
             label={label}
-            defaultValue={defaultValue}
+            defaultValue={value}
             maxValue={maxValue}
+            minValue={minValue}
             onChangeEnd={onChangeEnd}
-            minValue={0}
             showTooltip={true}
             showSteps={true}
             step={1}
