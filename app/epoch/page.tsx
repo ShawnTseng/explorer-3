@@ -2,6 +2,7 @@ import beautify from "../_lib/beautify";
 import BlockFrostApi from "../_lib/block-frost-api";
 import DateTimePipe from "../_lib/date-fns";
 import ProgressBar from "../_components/progress-bar";
+import DateRange from "../_components/date-range";
 
 export default async function Epoch() {
   const latestEpoch = await BlockFrostApi.epochsLatest();
@@ -16,10 +17,10 @@ export default async function Epoch() {
   return (
     <>
       <p>Current Epoch: {latestEpoch.epoch}</p>
-      <p>Start Time: {DateTimePipe(latestEpoch.start_time)}</p>
-      <p>End Time: {DateTimePipe(latestEpoch.end_time)}</p>
-      <p>First Block Time: {DateTimePipe(latestEpoch.first_block_time)}</p>
-      <p>Last Block Time: {DateTimePipe(latestEpoch.last_block_time)}</p>
+      <p>Start Time: {DateTimePipe.DateTimePipe1(latestEpoch.start_time)}</p>
+      <p>End Time: {DateTimePipe.DateTimePipe1(latestEpoch.end_time)}</p>
+      <p>First Block Time: {DateTimePipe.DateTimePipe1(latestEpoch.first_block_time)}</p>
+      <p>Last Block Time: {DateTimePipe.DateTimePipe1(latestEpoch.last_block_time)}</p>
       <p>Block Count: {latestEpoch.block_count}</p>
       <p>Transaction Count: {latestEpoch.tx_count}</p>
       <p>Fee: {latestEpoch.fees}</p>
@@ -27,7 +28,11 @@ export default async function Epoch() {
       <p>active stack: {latestEpoch.active_stake}</p>
       <div className="flex">
         <div className="flex-1 p-4">
-          <p>Start Time: {DateTimePipe(latestEpoch.start_time)}</p>
+          <p>Current Epoch</p>
+          <DateRange
+            startDateTime={DateTimePipe.toISO8601(latestEpoch.start_time)}
+            endDateTime={DateTimePipe.toISO8601(latestEpoch.end_time)}
+          />
         </div>
         <div className="flex-1 p-4">
           <ProgressBar value={progressValue} />
