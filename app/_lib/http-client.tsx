@@ -4,6 +4,7 @@ enum Network {
     Preview = 'https://cardano-preview.blockfrost.io/api/v0'
 }
 
+// TODO:remove or hide token
 const projectId = 'mainnetu5nmITJybEaNjj01WHytbovIcOAW8HBH';
 
 const HttpClient = () => {
