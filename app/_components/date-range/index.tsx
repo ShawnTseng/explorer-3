@@ -9,7 +9,7 @@ const DateRange = ({ startDateTime = '', endDateTime = '' }) => {
     return (
         <DateRangePicker
             isReadOnly
-            defaultValue={{
+            value={{
                 start,
                 end
             }}
